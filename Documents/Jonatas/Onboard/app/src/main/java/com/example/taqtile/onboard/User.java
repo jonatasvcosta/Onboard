@@ -19,26 +19,26 @@ public class User {
     }
 
     /*static info Info = new info("Joao","Carlos","http://queconceito.com.br/wp-content/uploads/2015/01/Emoticon.jpg");*/
-    static ArrayList<HashMap<Integer, info>> lista;
+    static HashMap<Integer, info> lista;
     static String[] nome = {"Joao","Jose","Jaime","Carlos","Jhennifer","Camila","Stefanie","Marcos"};
     static String[] sobrenome = {"Silva","Costa","Lopez","Vargas","Buuck","Steuer","Ferreira","Gouveia"};
     int [] ViewCount = new int[10];
     public static final String USER_TAG = "User";
 
-    public ArrayList<HashMap<Integer, info>> list(int Pagina){
+    public HashMap<Integer, info> list(int Pagina){
         Log.i(USER_TAG,"list");
-        lista = new ArrayList<HashMap<Integer, info>>();
+        lista = new HashMap<Integer, info>();
         int n1, n2;
         info random_info = new info();
         Random r = new Random();
         for(int i = 0; i < 10; i++){
             n1 = r.nextInt(7);
             n2 = r.nextInt(7);
-            random_info.set(nome[n1],sobrenome[n2],"http://queconceito.com.br/wp-content/uploads/2015/01/Emoticon.jpg");
-
-            lista.add(i,random_info);
+            random_info.set(nome[n1], sobrenome[n2], "http://queconceito.com.br/wp-content/uploads/2015/01/Emoticon.jpg");
+            /* System.out.println("Name: " + random_info.first_name); */
+            lista.put(i, random_info);
+            /* System.out.println("Name on the list:"+lista.get(i).first_name); */
         }
-        
         return lista;
     }
     public void incrementViewCount(int id){

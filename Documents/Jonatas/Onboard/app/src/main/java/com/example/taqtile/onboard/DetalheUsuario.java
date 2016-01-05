@@ -1,39 +1,31 @@
 package com.example.taqtile.onboard;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import com.example.taqtile.onboard.User;
+import android.content.Intent;
+import android.widget.TextView;
+import android.widget.RelativeLayout;
+import android.view.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+public class DetalheUsuario extends ActionBarActivity {
 
-
-public class Main extends ActionBarActivity{
-    User usuario = new User();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_detalhe_usuario);
+        Intent intent = getIntent();
+        TextView view = (TextView) findViewById(R.id.texto);
+        view.setText(intent.getStringExtra("first_name"));
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_detalhe_usuario, menu);
         return true;
-    }
-
-    public void DetalheUsuario(View view){
-        Intent intent = new Intent(this, DetalheUsuario.class);
-        int id = 0;
-        intent.putExtra("first_name", usuario.list(0).get(id).first_name);
-        intent.putExtra("last_name", usuario.list(0).get(id).last_name);
-        intent.putExtra("avatar", usuario.list(0).get(id).avatar);
-        startActivity(intent);
     }
 
     @Override
