@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.example.taqtile.onboard.User;
 
 
 public class Main extends ActionBarActivity {
@@ -11,6 +12,8 @@ public class Main extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        User usuario = new User();
+        System.out.println(usuario.list(0));
         setContentView(R.layout.activity_main);
     }
 
