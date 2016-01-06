@@ -19,26 +19,31 @@ import java.util.HashMap;
 
 public class Main extends ActionBarActivity{
     private User usuario = new User();
+    HashMap<Integer, User.info> lista_dados;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        lista_dados = usuario.list(0);
         String[] info_usuarios = new String[10];
         for(int i = 0; i < 10; i++){
-            info_usuarios[i] = usuario.list(0).get(i).first_name+"  "+usuario.list(0).get(i).last_name;
+            info_usuarios[i] = lista_dados.get(i).first_name+"  "+lista_dados.get(i).last_name;
         }
         final ListView listView = (ListView) findViewById(R.id.lista_usuarios);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.item_lista, R.id.texto_item, info_usuarios);
         listView.setAdapter(adapter);
-
+        final Intent intent = new Intent(this, DetalheUsuario.class);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 int itemPosition = position;
-                Toast.makeText(getApplicationContext(), "Position :" + itemPosition,Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(getApplicationContext(), "Position :" + itemPosition,Toast.LENGTH_SHORT).show();*/
+
+                intent.putExtra("first_name",lista_dados.get(itemPosition).first_name);
+                intent.putExtra("last_name",lista_dados.get(itemPosition).last_name);
+                intent.putExtra("avatar",lista_dados.get(itemPosition).avatar);
+                startActivity(intent);
             }
         });
     }

@@ -16,8 +16,13 @@ public class DetalheUsuario extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhe_usuario);
         Intent intent = getIntent();
-        TextView view = (TextView) findViewById(R.id.texto);
+        TextView view = (TextView) findViewById(R.id.nome);
         view.setText(intent.getStringExtra("first_name"));
+        view = (TextView) findViewById(R.id.sobrenome);
+        view.setText(intent.getStringExtra("last_name"));
+        view = (TextView) findViewById(R.id.avatar);
+        if(intent.getStringExtra("avatar").length() <= 25) view.setText(intent.getStringExtra("avatar"));
+        else view.setText(intent.getStringExtra("avatar").substring(0,22)+"...");
 
     }
 

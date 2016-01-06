@@ -29,16 +29,17 @@ public class User {
         Log.i(USER_TAG,"list");
         lista = new HashMap<Integer, info>();
         int n1, n2;
-        info random_info = new info();
         Random r = new Random();
         for(int i = 0; i < 10; i++){
             n1 = r.nextInt(7);
             n2 = r.nextInt(7);
+            info random_info = new info();
             random_info.set(nome[n1], sobrenome[n2], "http://queconceito.com.br/wp-content/uploads/2015/01/Emoticon.jpg");
             /* System.out.println("Name: " + random_info.first_name); */
             lista.put(i, random_info);
             /* System.out.println("Name on the list:"+lista.get(i).first_name); */
         }
+        /*System.out.println(lista.get(0).first_name+" "+lista.get(1).first_name+" "+lista.get(2).first_name+" ");*/
         return lista;
     }
     public void incrementViewCount(int id){
