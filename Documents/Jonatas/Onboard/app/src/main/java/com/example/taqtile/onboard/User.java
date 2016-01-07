@@ -11,6 +11,7 @@ import android.view.*;
  * Created by taqtile on 1/5/16.
  */
 public class User {
+    public int [] ViewCount = new int[10];
     /*Classe de informações do usuário: nome, sobrenome e avatar */
     public class info extends HashMap<Integer, info> {
         public String first_name, last_name, avatar;
@@ -25,7 +26,6 @@ public class User {
     static HashMap<Integer, info> lista;
     static String[] nome = {"Joao","Jose","Jaime","Carlos","Jhennifer","Camila","Stefanie","Marcos"};
     static String[] sobrenome = {"Silva","Costa","Lopez","Vargas","Buuck","Steuer","Ferreira","Gouveia"};
-    public int [] ViewCount = new int[10];
     public static final String USER_TAG = "User";
 
     public HashMap<Integer, info> list(int Pagina){

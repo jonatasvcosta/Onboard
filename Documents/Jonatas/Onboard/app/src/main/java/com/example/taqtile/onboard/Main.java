@@ -19,22 +19,22 @@ import java.util.HashMap;
 
 
 public class Main extends ActionBarActivity{
-    private User usuario = new User();
-    HashMap<Integer, User.info> lista_dados;
+    private User mUsuario = new User();
+    private HashMap<Integer, User.info> mListaDados;
+    private CustomAdapter mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final int[] mostrar_marcador = new int[11];
-        for(int i = 0; i < 10; i++) mostrar_marcador[i] = 0;
+        for(int i = 0; i < 10; i++) mUsuario.resetViewCount(i);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        lista_dados = usuario.list(0);
-        final String[] info_usuarios = new String[10];
+        mListaDados = mUsuario.list(0);
+        final String[] infoUsuarios = new String[10];
         for(int i = 0; i < 10; i++){
-            info_usuarios[i] = lista_dados.get(i).first_name+"  "+lista_dados.get(i).last_name;
+            infoUsuarios[i] = mListaDados.get(i).first_name+"  "+mListaDados.get(i).last_name;
         }
+        mAdapter = new CustomAdapter(this, infoUsuarios, mUsuario.ViewCount);
         final ListView listView = (ListView) findViewById(R.id.lista_usuarios);
-        final CustomAdapter adapter = new CustomAdapter(this, info_usuarios, mostrar_marcador);
-        listView.setAdapter(adapter);
+        listView.setAdapter(mAdapter);
 
         final Intent intent = new Intent(this, DetalheUsuario.class);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -42,13 +42,11 @@ public class Main extends ActionBarActivity{
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 int itemPosition = position;
-//                Toast.makeText(getApplicationContext(), "Posicao "+itemPosition+" mostrar_marcador[0] = "+mostrar_marcador[0],Toast.LENGTH_SHORT).show();
-                mostrar_marcador[itemPosition] = 1;
-                adapter.notifyDataSetChanged();
-
-                intent.putExtra("first_name",lista_dados.get(itemPosition).first_name);
-                intent.putExtra("last_name",lista_dados.get(itemPosition).last_name);
-                intent.putExtra("avatar",lista_dados.get(itemPosition).avatar);
+                mUsuario.incrementViewCount(itemPosition);
+                mAdapter.notifyDataSetChanged();
+                intent.putExtra("first_name",mListaDados.get(itemPosition).first_name);
+                intent.putExtra("last_name",mListaDados.get(itemPosition).last_name);
+                intent.putExtra("avatar",mListaDados.get(itemPosition).avatar);
                 startActivity(intent);
             }
         });
@@ -59,15 +57,6 @@ public class Main extends ActionBarActivity{
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }
-
-    public void DetalheUsuario(View view){
-        Intent intent = new Intent(this, DetalheUsuario.class);
-        int id = 0;
-        intent.putExtra("first_name", usuario.list(0).get(id).first_name);
-        intent.putExtra("last_name", usuario.list(0).get(id).last_name);
-        intent.putExtra("avatar", usuario.list(0).get(id).avatar);
-        startActivity(intent);
     }
 
     @Override
