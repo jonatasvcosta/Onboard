@@ -50,5 +50,15 @@
             android:text = "Users"
             android:onClick="voltar"/>
     </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/user_avatar"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:maxWidth="50dp"
+                android:maxHeight="75dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
     </TableLayout>
 </LinearLayout>

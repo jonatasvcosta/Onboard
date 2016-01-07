@@ -1,13 +1,29 @@
 package com.example.taqtile.onboard;
 
+import android.app.ProgressDialog;
+import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.RelativeLayout;
 import android.view.*;
+import android.widget.Toast;
+
+import com.android.volley.*;
+import org.json.JSONObject;
+import com.android.volley.Request.Method;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import static android.widget.Toast.*;
 
 public class DetalheUsuario extends ActionBarActivity {
 
@@ -23,6 +39,26 @@ public class DetalheUsuario extends ActionBarActivity {
         view = (TextView) findViewById(R.id.avatar);
         if(intent.getStringExtra("avatar").length() <= 25) view.setText(intent.getStringExtra("avatar"));
         else view.setText(intent.getStringExtra("avatar").substring(0,22)+"...");
+        //Tentativa de adicionar Volley:
+        ImageLoader imageLoader = VolleySingleton.getInstance(this).getImageLoader();
+
+// If you are using normal ImageView
+        imageLoader.get(intent.getStringExtra("avatar"), new ImageLoader.ImageListener() {
+            ImageView imageView = (ImageView) findViewById(R.id.user_avatar);
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("IMG_ERROR", "Image Load Error: " + error.getMessage());
+            }
+
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
+                if (response.getBitmap() != null) {
+                    // load image into imageview
+                    imageView.setImageBitmap(response.getBitmap());
+                }
+            }
+        });
+
 
     }
 
