@@ -10,7 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent">
         <TableRow>
-            <TextView android:text= "First Name"
+            <TextView android:text= "First Name:"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -22,7 +22,7 @@
 
         </TableRow>
         <TableRow>
-            <TextView android:text= "Last Name"
+            <TextView android:text= "Last Name:"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -33,7 +33,7 @@
                 android:textColor="#778899"/>
         </TableRow>
         <TableRow>
-            <TextView android:text= "Avatar"
+            <TextView android:text= "Avatar:"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -43,5 +43,12 @@
                 android:layout_height="wrap_content"
                 android:textColor="#778899"/>
         </TableRow>
+    <TableRow>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "Users"
+            android:onClick="voltar"/>
+    </TableRow>
     </TableLayout>
 </LinearLayout>

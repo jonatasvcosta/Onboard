@@ -1,7 +1,10 @@
 package com.example.taqtile.onboard;
 
 import java.util.*;
+
+import android.content.Intent;
 import android.util.Log;
+import android.view.*;
 
 
 /**
@@ -22,7 +25,7 @@ public class User {
     static HashMap<Integer, info> lista;
     static String[] nome = {"Joao","Jose","Jaime","Carlos","Jhennifer","Camila","Stefanie","Marcos"};
     static String[] sobrenome = {"Silva","Costa","Lopez","Vargas","Buuck","Steuer","Ferreira","Gouveia"};
-    int [] ViewCount = new int[10];
+    public int [] ViewCount = new int[10];
     public static final String USER_TAG = "User";
 
     public HashMap<Integer, info> list(int Pagina){
@@ -43,6 +46,7 @@ public class User {
         return lista;
     }
     public void incrementViewCount(int id){
+        System.out.println(ViewCount);
         Log.i(USER_TAG,"incrementViewCount");
         ViewCount[id] += 1;
     }
@@ -55,4 +59,5 @@ public class User {
         Log.i(USER_TAG,"getViewCount");
         return ViewCount[id];
     }
+
 }

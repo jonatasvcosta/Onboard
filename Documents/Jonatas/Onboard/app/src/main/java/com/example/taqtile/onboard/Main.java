@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.taqtile.onboard.User;
+import com.example.taqtile.onboard.CustomAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,23 +23,28 @@ public class Main extends ActionBarActivity{
     HashMap<Integer, User.info> lista_dados;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final int[] mostrar_marcador = new int[11];
+        for(int i = 0; i < 10; i++) mostrar_marcador[i] = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         lista_dados = usuario.list(0);
-        String[] info_usuarios = new String[10];
+        final String[] info_usuarios = new String[10];
         for(int i = 0; i < 10; i++){
             info_usuarios[i] = lista_dados.get(i).first_name+"  "+lista_dados.get(i).last_name;
         }
         final ListView listView = (ListView) findViewById(R.id.lista_usuarios);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.item_lista, R.id.texto_item, info_usuarios);
+        final CustomAdapter adapter = new CustomAdapter(this, info_usuarios, mostrar_marcador);
         listView.setAdapter(adapter);
+
         final Intent intent = new Intent(this, DetalheUsuario.class);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 int itemPosition = position;
-                /*Toast.makeText(getApplicationContext(), "Position :" + itemPosition,Toast.LENGTH_SHORT).show();*/
+//                Toast.makeText(getApplicationContext(), "Posicao "+itemPosition+" mostrar_marcador[0] = "+mostrar_marcador[0],Toast.LENGTH_SHORT).show();
+                mostrar_marcador[itemPosition] = 1;
+                adapter.notifyDataSetChanged();
 
                 intent.putExtra("first_name",lista_dados.get(itemPosition).first_name);
                 intent.putExtra("last_name",lista_dados.get(itemPosition).last_name);

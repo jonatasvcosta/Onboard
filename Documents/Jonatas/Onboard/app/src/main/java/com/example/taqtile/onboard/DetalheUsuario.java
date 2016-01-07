@@ -47,4 +47,11 @@ public class DetalheUsuario extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void voltar(View view){
+//        Intent intent = new Intent(this, Main.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//        startActivity(intent);
+        onBackPressed();
+    }
 }
