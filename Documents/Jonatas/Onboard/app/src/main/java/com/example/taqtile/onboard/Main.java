@@ -69,7 +69,7 @@ public class Main extends ActionBarActivity{
         });
 
         //tentativa de Volley (para texto):
-        final TextView responseText = (TextView)findViewById(R.id.texto_http_teste);
+        //final TextView responseText = (TextView)findViewById(R.id.texto_http_teste);
 
         String url = "http://reqres.in/api/users?page=1";
 
