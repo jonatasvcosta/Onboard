@@ -2,9 +2,30 @@ package com.example.taqtile.onboard;
 
 import java.util.*;
 
-import android.content.Intent;
+import android.app.ProgressDialog;
+import android.media.Image;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.content.Intent;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.RelativeLayout;
 import android.view.*;
+import android.widget.Toast;
+
+import com.android.volley.*;
+import org.json.JSONObject;
+import com.android.volley.Request.Method;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import static android.widget.Toast.*;
 
 
 /**
@@ -29,6 +50,27 @@ public class User {
     public static final String USER_TAG = "User";
 
     public HashMap<Integer, info> list(int Pagina){
+
+        String url = "http://reqres.in/api/users?page=1";
+
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,
+                url, null,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("App", response.toString());
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d("App", "Error: " + error.getMessage());
+            }
+        });
+
+        //VolleySingleton.getInstance(this).addToRequestQueue(jsonObjReq);
+
         Log.i(USER_TAG,"list");
         lista = new HashMap<Integer, info>();
         int n1, n2;
