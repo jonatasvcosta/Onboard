@@ -70,51 +70,51 @@ public class Main extends ActionBarActivity{
 
         //tentativa de Volley (para texto):
         //final TextView responseText = (TextView)findViewById(R.id.texto_http_teste);
+//
+//        String url = "http://reqres.in/api/users?page=1";
+//
+//        final ProgressDialog pDialog = new ProgressDialog(this);
+//        pDialog.setMessage("Loading...");
+//        pDialog.show();
 
-        String url = "http://reqres.in/api/users?page=1";
-
-        final ProgressDialog pDialog = new ProgressDialog(this);
-        pDialog.setMessage("Loading...");
-        pDialog.show();
-
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,
-                url, null,
-                new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d("App", response.toString());
-                        mHttpUserData = response.toString();
-                        String auxString = new String();
-                        Random rand;
-                        int randNum;
-                        for(int i = 0; i != -1; i = mHttpUserData.indexOf("first_name",i+1)) {
-                            rand = new Random();
-                            randNum = rand.nextInt(10);
-                            infoUsuarios[randNum] = "";
-                            auxString = mHttpUserData.substring(mHttpUserData.indexOf("first_name", i) + 13, mHttpUserData.indexOf("last_name", i) - 3);
-                            infoUsuarios[randNum] += auxString+" ";
-                            mListaDados.get(randNum).first_name = auxString;
-                            auxString = mHttpUserData.substring(mHttpUserData.indexOf("last_name", i) + 12, mHttpUserData.indexOf("avatar", i) - 3);
-                            infoUsuarios[randNum] += auxString;
-                            mListaDados.get(randNum).last_name = auxString;
-                            auxString = mHttpUserData.substring(mHttpUserData.indexOf("avatar", i) + 9, mHttpUserData.indexOf("}", i) - 1);
-                            mListaDados.get(randNum).avatar = auxString.replace("\\","");
-                        }
-                        mAdapter.notifyDataSetChanged();
-                        pDialog.hide();
-                    }
-                }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d("App", "Error: " + error.getMessage());
-                // hide the progress dialog
-                pDialog.hide();
-            }
-        });
-
-        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjReq);
+//        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,
+//                url, null,
+//                new Response.Listener<JSONObject>() {
+//
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        Log.d("App", response.toString());
+//                        mHttpUserData = response.toString();
+//                        String auxString = new String();
+//                        Random rand;
+//                        int randNum;
+//                        for(int i = 0; i != -1; i = mHttpUserData.indexOf("first_name",i+1)) {
+//                            rand = new Random();
+//                            randNum = rand.nextInt(10);
+//                            infoUsuarios[randNum] = "";
+//                            auxString = mHttpUserData.substring(mHttpUserData.indexOf("first_name", i) + 13, mHttpUserData.indexOf("last_name", i) - 3);
+//                            infoUsuarios[randNum] += auxString+" ";
+//                            mListaDados.get(randNum).first_name = auxString;
+//                            auxString = mHttpUserData.substring(mHttpUserData.indexOf("last_name", i) + 12, mHttpUserData.indexOf("avatar", i) - 3);
+//                            infoUsuarios[randNum] += auxString;
+//                            mListaDados.get(randNum).last_name = auxString;
+//                            auxString = mHttpUserData.substring(mHttpUserData.indexOf("avatar", i) + 9, mHttpUserData.indexOf("}", i) - 1);
+//                            mListaDados.get(randNum).avatar = auxString.replace("\\","");
+//                        }
+//                        mAdapter.notifyDataSetChanged();
+//                        pDialog.hide();
+//                    }
+//                }, new Response.ErrorListener() {
+//
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                VolleyLog.d("App", "Error: " + error.getMessage());
+//                // hide the progress dialog
+//                pDialog.hide();
+//            }
+//        });
+//
+//        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjReq);
     }
 
     @Override

@@ -51,23 +51,23 @@ public class User {
 
     public HashMap<Integer, info> list(int Pagina){
 
-        String url = "http://reqres.in/api/users?page=1";
-
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,
-                url, null,
-                new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d("App", response.toString());
-                    }
-                }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d("App", "Error: " + error.getMessage());
-            }
-        });
+//        String url = "http://reqres.in/api/users?page=1";
+//
+//        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,
+//                url, null,
+//                new Response.Listener<JSONObject>() {
+//
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        Log.d("App", response.toString());
+//                    }
+//                }, new Response.ErrorListener() {
+//
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                VolleyLog.d("App", "Error: " + error.getMessage());
+//            }
+//        });
 
         //VolleySingleton.getInstance(this).addToRequestQueue(jsonObjReq);
 
@@ -80,6 +80,7 @@ public class User {
             n2 = r.nextInt(7);
             info random_info = new info();
             random_info.set(nome[n1], sobrenome[n2], "http://queconceito.com.br/wp-content/uploads/2015/01/Emoticon.jpg");
+            //random_info.set(nome[n1], sobrenome[n2], "http://www.pic4ever.com/images/bathtime.gif");
             /* System.out.println("Name: " + random_info.first_name); */
             lista.put(i, random_info);
             /* System.out.println("Name on the list:"+lista.get(i).first_name); */
