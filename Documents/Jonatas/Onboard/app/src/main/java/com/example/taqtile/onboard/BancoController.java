@@ -17,8 +17,8 @@ public class BancoController {
     }
     public String InsereDados(String first_name, String last_name, String avatar){
         ContentValues values;
-        long result;
-        db = banco.getWritableDatabase();
+        long result = 1;
+          db = banco.getWritableDatabase();
         values = new ContentValues();
         values.put(CriaBanco.FIRST_NAME, first_name);
         values.put(CriaBanco.LAST_NAME, last_name);

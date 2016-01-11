@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class CriaBanco extends SQLiteOpenHelper {
     private static final String BASE_NAME = "userData.db";
-    public static final String TABLE = "userInfo";
+    public static final String TABLE = "USERS";
     public static final String ID = "_id";
     public static final String FIRST_NAME = "first_name";
     public static final String LAST_NAME = "last_name";
@@ -24,12 +24,12 @@ public class CriaBanco extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE "+TABLE+"("
-        + ID+ "integer primary key autoincrement,"
-        + FIRST_NAME + "text,"
-        + LAST_NAME + "text,"
-        + AVATAR + "text,"
-        + COUNT_VIEW + "integer"+")";
+        String sql = "CREATE TABLE "+TABLE+" ("
+        + ID+ " integer primary key autoincrement, "
+        + FIRST_NAME + " text, "
+        + LAST_NAME + " text, "
+        + AVATAR + " text , "
+        + COUNT_VIEW + " integer); ";
         db.execSQL(sql);
     }
 

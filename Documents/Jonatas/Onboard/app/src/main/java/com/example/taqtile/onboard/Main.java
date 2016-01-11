@@ -41,7 +41,6 @@ public class Main extends ActionBarActivity{
     private HashMap<Integer, User.info> mListaDados;
     private CustomAdapter mAdapter;
 //    private MyDatabase mUserDatabase;
-    private SQLiteDatabase mSQLiteDatabase;
     String mHttpUserData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

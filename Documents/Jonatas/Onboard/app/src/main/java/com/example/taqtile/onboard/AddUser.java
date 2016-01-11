@@ -15,7 +15,7 @@ public class AddUser extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
-        //final BancoController crud = new BancoController(getApplicationContext());
+        final BancoController crud = new BancoController(getApplicationContext());
         Button addButton = (Button) findViewById(R.id.button_add);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,8 +26,8 @@ public class AddUser extends ActionBarActivity {
                 EditText avatar = (EditText) findViewById(R.id.uavatar);
                 String result;
 
-                //result = crud.InsereDados(firstName.getText().toString(),lastName.getText().toString(),avatar.getText().toString());
-                //Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+                result = crud.InsereDados(firstName.getText().toString(),lastName.getText().toString(),avatar.getText().toString());
+                Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
             }
         });
 
