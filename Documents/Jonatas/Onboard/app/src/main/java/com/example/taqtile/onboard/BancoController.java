@@ -2,6 +2,7 @@ package com.example.taqtile.onboard;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.taqtile.onboard.CriaBanco;
@@ -28,5 +29,22 @@ public class BancoController {
         db.close();
         if (result == -1) return "Error when adding user to database";
         return "User added to database";
+    }
+
+    public Cursor CarregaDados() {
+//        Cursor cursor = null;
+//        db = banco.getWritableDatabase();
+//        String[] fields = {CriaBanco.ID, CriaBanco.FIRST_NAME};
+//        cursor = db.rawQuery("SELECT * from "+CriaBanco.TABLE,null);
+//        db.close();
+//        if (cursor != null) cursor.moveToFirst();
+//        return cursor;
+        Cursor cursor;
+        String[] campos = {banco.ID, banco.FIRST_NAME, banco.LAST_NAME, banco.AVATAR, banco.COUNT_VIEW};
+        db = banco.getReadableDatabase();
+        cursor = db.query(banco.TABLE, campos, null, null, null, null, null, null);
+        if(cursor != null) cursor.moveToFirst();
+        db.close();
+        return cursor;
     }
 }

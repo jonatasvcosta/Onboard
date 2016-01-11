@@ -1,5 +1,6 @@
 package com.example.taqtile.onboard;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -53,5 +54,10 @@ public class AddUser extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void viewUsers(View view){
+        Intent intent = new Intent(this, viewUsers.class);
+        startActivity(intent);
     }
 }
