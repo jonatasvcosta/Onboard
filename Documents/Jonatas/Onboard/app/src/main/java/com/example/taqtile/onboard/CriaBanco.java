@@ -9,27 +9,27 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class CriaBanco extends SQLiteOpenHelper {
     private static final String BASE_NAME = "userData.db";
-    private static final String TABLE = "USERS";
-    private static final String ID = "_id";
-    private static final String FIRST_NAME = "first_name";
-    private static final String LAST_NAME = "last_name";
-    private static final String AVATAR = "avatar";
-    private static final String COUNT_VIEW = "count_view";
-    private static final int VERSAO = 1;
+    public static final String TABLE = "userInfo";
+    public static final String ID = "_id";
+    public static final String FIRST_NAME = "first_name";
+    public static final String LAST_NAME = "last_name";
+    public static final String AVATAR = "avatar";
+    public static final String COUNT_VIEW = "count_view";
+    public static final int VERSION = 1;
 
-    public CriaBanco(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public CriaBanco(Context context) {
+        super(context, BASE_NAME,null , VERSION);
     }
 
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE "+TABLE+"("
-        + ID+ "integer primary key,"
+        + ID+ "integer primary key autoincrement,"
         + FIRST_NAME + "text,"
         + LAST_NAME + "text,"
         + AVATAR + "text,"
-        + COUNT_VIEW + "integer);";
+        + COUNT_VIEW + "integer"+")";
         db.execSQL(sql);
     }
 

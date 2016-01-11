@@ -4,7 +4,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddUser extends ActionBarActivity {
 
@@ -12,6 +15,22 @@ public class AddUser extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
+        //final BancoController crud = new BancoController(getApplicationContext());
+        Button addButton = (Button) findViewById(R.id.button_add);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                EditText firstName = (EditText) findViewById(R.id.ufirst_name);
+                EditText lastName = (EditText) findViewById(R.id.ulast_name);
+                EditText avatar = (EditText) findViewById(R.id.uavatar);
+                String result;
+
+                //result = crud.InsereDados(firstName.getText().toString(),lastName.getText().toString(),avatar.getText().toString());
+                //Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
