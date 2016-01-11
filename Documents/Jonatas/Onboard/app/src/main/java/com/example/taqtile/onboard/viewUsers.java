@@ -37,7 +37,7 @@ public class viewUsers extends ActionBarActivity {
             infoUsuarios[i] = first_name.get(i).toString() + " " + last_name.get(i).toString();
             viewCount[i] = 0;
         }
-        final CustomAdapter mAdapter = new CustomAdapter(this,infoUsuarios,viewCount);
+        final CustomAdapter2 mAdapter = new CustomAdapter2(this,infoUsuarios,viewCount);
         ListView lista = (ListView) findViewById(R.id.users_database_list);
         lista.setAdapter(mAdapter);
         final Intent intent = new Intent(this, DetalheUsuario.class);
