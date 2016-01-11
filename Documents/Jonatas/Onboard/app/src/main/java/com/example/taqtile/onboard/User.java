@@ -3,6 +3,8 @@ package com.example.taqtile.onboard;
 import java.util.*;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.database.sqlite.*;
 import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -24,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 import static android.widget.Toast.*;
 
@@ -50,26 +53,7 @@ public class User {
     public static final String USER_TAG = "User";
 
     public HashMap<Integer, info> list(int Pagina){
-
-//        String url = "http://reqres.in/api/users?page=1";
-//
-//        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,
-//                url, null,
-//                new Response.Listener<JSONObject>() {
-//
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        Log.d("App", response.toString());
-//                    }
-//                }, new Response.ErrorListener() {
-//
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                VolleyLog.d("App", "Error: " + error.getMessage());
-//            }
-//        });
-
-        //VolleySingleton.getInstance(this).addToRequestQueue(jsonObjReq);
+        //mUserDatabase = SQLiteDatabase.openDatabase("app/src/main/assets/users.db",null,0);
 
         Log.i(USER_TAG,"list");
         lista = new HashMap<Integer, info>();

@@ -1,7 +1,10 @@
 package com.example.taqtile.onboard;
 
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -36,17 +39,29 @@ public class Main extends ActionBarActivity{
     private User mUsuario = new User();
     private HashMap<Integer, User.info> mListaDados;
     private CustomAdapter mAdapter;
+//    private MyDatabase mUserDatabase;
+    private SQLiteDatabase mSQLiteDatabase;
     String mHttpUserData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         for(int i = 0; i < 10; i++) mUsuario.resetViewCount(i);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mListaDados = mUsuario.list(0);
         final String[] infoUsuarios = new String[10];
+//        mSQLiteDatabase = mUserDatabase.getWritableDatabase();
+ //       mSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS USERS(id INT PRIMARY KEY NOT NULL,first_name TEXT NOT NULL,last_name TEXT NOT NULL,avatar TEXT NOT NULL,view_count INT NOT NULL);");
+//        ContentValues values = new ContentValues();
+//        values.put("id",0);
+//        values.put("first_name", "Manuel");
+//        values.put("last_name", "Nóbrega");
+//        values.put("avatar", "https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg");
+//// insert row in table
+//        long insert = mSQLiteDatabase.insert("USERS", null, values);
+
         for(int i = 0; i < 10; i++){
             infoUsuarios[i] = mListaDados.get(i).first_name+"  "+mListaDados.get(i).last_name;
+            //infoUsuarios[i] = cursor.getString(cursor.getColumnIndex("first_name")) + " " + cursor.getString(cursor.getColumnIndex("last_name"));
         }
 
         mAdapter = new CustomAdapter(this, infoUsuarios, mUsuario.ViewCount);
@@ -137,5 +152,10 @@ public class Main extends ActionBarActivity{
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void newUser(View view){
+        Intent intent = new Intent(this, AddUser.class);
+        startActivity(intent);
     }
 }
