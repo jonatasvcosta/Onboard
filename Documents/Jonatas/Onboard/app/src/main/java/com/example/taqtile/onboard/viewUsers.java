@@ -8,7 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -40,17 +42,26 @@ public class viewUsers extends ActionBarActivity {
         final CustomAdapter2 mAdapter = new CustomAdapter2(this,infoUsuarios,viewCount);
         ListView lista = (ListView) findViewById(R.id.users_database_list);
         lista.setAdapter(mAdapter);
+
         final Intent intent = new Intent(this, DetalheUsuario.class);
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                          @Override
                                          public void onItemClick(AdapterView<?> parent, View view,
                                                                     int position, long id) {
-                                            intent.putExtra("first_name", first_name.get(position).toString());
-                                            intent.putExtra("last_name", last_name.get(position).toString());
-                                            intent.putExtra("avatar", avatar.get(position).toString());
-                                            viewCount[position] = 1;
-                                            mAdapter.notifyDataSetChanged();
-                                            startActivity(intent);
+                                             ImageView imgDelete = (ImageView) findViewById(R.id.deletar);
+                                             imgDelete.setOnClickListener(new View.OnClickListener() {
+                                                 @Override
+                                                 public void onClick(View v) {
+                                                     Toast.makeText(getApplicationContext(), "Clicou em deletar", Toast.LENGTH_SHORT).show();
+                                                 }
+                                             });
+                                                 intent.putExtra("first_name", first_name.get(position).toString());
+                                                 intent.putExtra("last_name", last_name.get(position).toString());
+                                                 intent.putExtra("avatar", avatar.get(position).toString());
+                                                 viewCount[position] = 1;
+                                                 mAdapter.notifyDataSetChanged();
+                                                 startActivity(intent);
+
                                         }
                                     }
         );

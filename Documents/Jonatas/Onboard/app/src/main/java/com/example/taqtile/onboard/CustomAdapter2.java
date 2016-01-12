@@ -5,6 +5,7 @@ package com.example.taqtile.onboard;
  */
 
 import android.app.Activity;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,12 +40,14 @@ public class CustomAdapter2 extends ArrayAdapter<String> {
     }
 
     public View getView(int position,View view,ViewGroup parent) {
-        LayoutInflater inflater=context.getLayoutInflater();
+        LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.item_lista2, null, true);
         TextView id_item = (TextView) rowView.findViewById(R.id.item_id);
         ImageView marcador_item = (ImageView) rowView.findViewById(R.id.bolinha);
         TextView info_item = (TextView) rowView.findViewById(R.id.texto_item);
-
+        ImageView deleteImg = (ImageView) rowView.findViewById(R.id.deletar);
+        ImageView editImg = (ImageView) rowView.findViewById(R.id.editar);
+        deleteImg.setTag(position);
         if(countView[position] != 0){
             marcador_item.setVisibility(View.GONE);
         }
@@ -53,5 +56,13 @@ public class CustomAdapter2 extends ArrayAdapter<String> {
         return rowView;
 
     };
+
+    public class ViewHolder{
+        ImageView bolinha;
+        TextView idItem;
+        ImageView editImg;
+        ImageView deleteImg;
+        TextView userInfo;
+    }
 }
 
