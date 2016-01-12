@@ -1,6 +1,7 @@
 package com.example.taqtile.onboard;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class AddUser extends ActionBarActivity {
-
+    private int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

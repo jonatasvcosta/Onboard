@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import com.example.taqtile.onboard.CriaBanco;
 
@@ -46,5 +47,16 @@ public class BancoController {
         if(cursor != null) cursor.moveToFirst();
         db.close();
         return cursor;
+    }
+    public Cursor getAllData(){
+        String sql = "SELECT * FROM "+CriaBanco.TABLE;
+        return db.rawQuery(sql, null);
+    }
+    public int DeletarDados(String name, String lastname){
+        db = banco.getWritableDatabase();
+        return db.delete(CriaBanco.TABLE,CriaBanco.FIRST_NAME+" = '"+name+"' AND "+CriaBanco.LAST_NAME+" = '"+lastname+"'", null);
+        //return db.delete(CriaBanco.TABLE, "first_name = ''", null);
+        //return db.delete(CriaBanco.TABLE, "_id=2", null);
+
     }
 }

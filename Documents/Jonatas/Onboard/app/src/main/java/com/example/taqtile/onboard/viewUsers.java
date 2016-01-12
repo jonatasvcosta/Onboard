@@ -23,22 +23,19 @@ public class viewUsers extends ActionBarActivity {
         setContentView(R.layout.activity_view_users);
         BancoController crud = new BancoController(getBaseContext());
         Cursor cursor = crud.CarregaDados();
-        final ArrayList first_name, last_name, avatar;
+        final ArrayList first_name, last_name, avatar, infoUsuarios;
         first_name = new ArrayList();
         last_name = new ArrayList();
+        infoUsuarios = new ArrayList();
         avatar = new ArrayList();
         final int [] viewCount;
         do{
             first_name.add(cursor.getString(cursor.getColumnIndex(CriaBanco.FIRST_NAME)));
             last_name.add(cursor.getString(cursor.getColumnIndex(CriaBanco.LAST_NAME)));
             avatar.add(cursor.getString(cursor.getColumnIndex(CriaBanco.AVATAR)));
+            infoUsuarios.add(cursor.getString(cursor.getColumnIndex(CriaBanco.FIRST_NAME))+" "+cursor.getString(cursor.getColumnIndex(CriaBanco.LAST_NAME)));
         }while(cursor.moveToNext());
-        String[] infoUsuarios = new String[first_name.size()];
         viewCount = new int[first_name.size()];
-        for(int i = 0; i < first_name.size(); i++){
-            infoUsuarios[i] = first_name.get(i).toString() + " " + last_name.get(i).toString();
-            viewCount[i] = 0;
-        }
         final CustomAdapter2 mAdapter = new CustomAdapter2(this,infoUsuarios,viewCount);
         ListView lista = (ListView) findViewById(R.id.users_database_list);
         lista.setAdapter(mAdapter);
@@ -48,13 +45,6 @@ public class viewUsers extends ActionBarActivity {
                                          @Override
                                          public void onItemClick(AdapterView<?> parent, View view,
                                                                     int position, long id) {
-                                             ImageView imgDelete = (ImageView) findViewById(R.id.deletar);
-                                             imgDelete.setOnClickListener(new View.OnClickListener() {
-                                                 @Override
-                                                 public void onClick(View v) {
-                                                     Toast.makeText(getApplicationContext(), "Clicou em deletar", Toast.LENGTH_SHORT).show();
-                                                 }
-                                             });
                                                  intent.putExtra("first_name", first_name.get(position).toString());
                                                  intent.putExtra("last_name", last_name.get(position).toString());
                                                  intent.putExtra("avatar", avatar.get(position).toString());
@@ -65,6 +55,7 @@ public class viewUsers extends ActionBarActivity {
                                         }
                                     }
         );
+
     }
 
     @Override
