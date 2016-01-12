@@ -36,7 +36,7 @@ public class viewUsers extends ActionBarActivity {
             infoUsuarios.add(cursor.getString(cursor.getColumnIndex(CriaBanco.FIRST_NAME))+" "+cursor.getString(cursor.getColumnIndex(CriaBanco.LAST_NAME)));
         }while(cursor.moveToNext());
         viewCount = new int[first_name.size()];
-        final CustomAdapter2 mAdapter = new CustomAdapter2(this,infoUsuarios,viewCount);
+        final CustomAdapter2 mAdapter = new CustomAdapter2(this,infoUsuarios,viewCount,avatar);
         ListView lista = (ListView) findViewById(R.id.users_database_list);
         lista.setAdapter(mAdapter);
 

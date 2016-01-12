@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.taqtile.onboard.EditUser">
+
+        <TextView
+            android:text="First Name:"
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="47dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ufirst_name"
+            android:layout_below="@+id/text1"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true" />
+        <TextView
+            android:text="Last Name:"
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/ufirst_name"
+            android:layout_marginTop="47dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ulast_name"
+            android:layout_below="@+id/text2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true" />
+        <TextView
+            android:text="Avatar:"
+            android:id="@+id/text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/ulast_name"
+            android:layout_marginTop="47dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/uavatar"
+            android:layout_below="@+id/text3"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true" />
+        <Button
+            android:id="@+id/button_add"
+            android:layout_below="@id/uavatar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Edit this user"/>
+        <Button
+            android:id="@+id/button_view"
+            android:layout_below="@id/button_add"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="View Users"
+            android:onClick="viewUsers"/>
+
+    </RelativeLayout>
