@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 
 public class EditUser extends ActionBarActivity {
-
+    private String previousName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +22,7 @@ public class EditUser extends ActionBarActivity {
         final Intent intent = getIntent();
         EditText firstName = (EditText) findViewById(R.id.ufirst_name);
         firstName.setText(intent.getStringExtra("firstName"));
+        previousName = intent.getStringExtra("firstName");
         EditText lastName = (EditText) findViewById(R.id.ulast_name);
         lastName.setText(intent.getStringExtra("lastName"));
         EditText avatar = (EditText) findViewById(R.id.uavatar);
@@ -34,8 +35,10 @@ public class EditUser extends ActionBarActivity {
                 EditText lastName = (EditText) findViewById(R.id.ulast_name);
                 EditText avatar = (EditText) findViewById(R.id.uavatar);
                 String result;
-                result = crud.InsereDados(firstName.getText().toString(), lastName.getText().toString(), avatar.getText().toString());
+                result = crud.AlteraDados(previousName, lastName.getText().toString(), avatar.getText().toString());
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), lastName.getText().toString(), Toast.LENGTH_SHORT).show();
+
             }
         });
     }

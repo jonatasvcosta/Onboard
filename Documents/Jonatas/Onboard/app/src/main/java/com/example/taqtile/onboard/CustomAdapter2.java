@@ -81,6 +81,7 @@ public class CustomAdapter2 extends ArrayAdapter<String> {
                 intent.putExtra("firstName",completeName.substring(0,completeName.indexOf(" ")));
                 intent.putExtra("lastName",completeName.substring(completeName.indexOf(" "),completeName.length()));
                 intent.putExtra("avatar",avatar.get(position).toString());
+                notifyDataSetChanged();
                 context.startActivity(intent);
             }
         });

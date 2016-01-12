@@ -31,6 +31,20 @@ public class BancoController {
         if (result == -1) return "Error when adding user to database";
         return "User added to database";
     }
+    public String AlteraDados(String first_name, String last_name, String avatar){
+        ContentValues values;
+        long result = 1;
+        db = banco.getWritableDatabase();
+        values = new ContentValues();
+        values.put(CriaBanco.FIRST_NAME, first_name);
+        values.put(CriaBanco.LAST_NAME, last_name);
+        values.put(CriaBanco.AVATAR,avatar);
+        //result = db.update(CriaBanco.TABLE, values, CriaBanco.FIRST_NAME+" = '"+first_name+"' AND "+CriaBanco.LAST_NAME+" = '"+last_name+"'", null);
+        result = db.update(CriaBanco.TABLE, values, CriaBanco.FIRST_NAME+" = '"+first_name+"'", null);
+        db.close();
+        if (result == -1) return "Error when editing user";
+        return "User edited successfully";
+    }
 
     public Cursor CarregaDados() {
 //        Cursor cursor = null;
