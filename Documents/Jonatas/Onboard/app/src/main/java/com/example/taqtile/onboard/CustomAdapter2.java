@@ -39,7 +39,7 @@ public class CustomAdapter2 extends ArrayAdapter<String> {
         this.countView = countView;
     }
 
-    public View getView(int position,View view,ViewGroup parent) {
+    public View getView(final int position,View view,ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.item_lista2, null, true);
         TextView id_item = (TextView) rowView.findViewById(R.id.item_id);
@@ -47,7 +47,18 @@ public class CustomAdapter2 extends ArrayAdapter<String> {
         TextView info_item = (TextView) rowView.findViewById(R.id.texto_item);
         ImageView deleteImg = (ImageView) rowView.findViewById(R.id.deletar);
         ImageView editImg = (ImageView) rowView.findViewById(R.id.editar);
-        deleteImg.setTag(position);
+        deleteImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Cliquei em deletar na posicao "+position,Toast.LENGTH_SHORT).show();
+            }
+        });
+        editImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Cliquei em editar na posicao "+position,Toast.LENGTH_SHORT).show();
+            }
+        });
         if(countView[position] != 0){
             marcador_item.setVisibility(View.GONE);
         }
