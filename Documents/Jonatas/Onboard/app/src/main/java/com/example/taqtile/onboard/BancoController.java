@@ -31,7 +31,7 @@ public class BancoController {
         if (result == -1) return "Error when adding user to database";
         return "User added to database";
     }
-    public String AlteraDados(String first_name, String last_name, String avatar){
+    public String AlteraDados(String first_name, String last_name, String avatar, String id){
         ContentValues values;
         long result = 1;
         db = banco.getWritableDatabase();
@@ -41,6 +41,7 @@ public class BancoController {
         values.put(CriaBanco.AVATAR,avatar);
         //result = db.update(CriaBanco.TABLE, values, CriaBanco.FIRST_NAME+" = '"+first_name+"' AND "+CriaBanco.LAST_NAME+" = '"+last_name+"'", null);
         result = db.update(CriaBanco.TABLE, values, CriaBanco.FIRST_NAME+" = '"+first_name+"'", null);
+//        result = db.update(CriaBanco.TABLE, values, "_id = "+id,null);
         db.close();
         if (result == -1) return "Error when editing user";
         return "User edited successfully";
@@ -66,9 +67,12 @@ public class BancoController {
         String sql = "SELECT * FROM "+CriaBanco.TABLE;
         return db.rawQuery(sql, null);
     }
-    public int DeletarDados(String name, String lastname){
+    public int DeletarDados(String name, String lastname, String position){
         db = banco.getWritableDatabase();
         return db.delete(CriaBanco.TABLE,CriaBanco.FIRST_NAME+" = '"+name+"' AND "+CriaBanco.LAST_NAME+" = '"+lastname+"'", null);
+//        String sql = "DELETE FROM "+CriaBanco.TABLE+" WHERE "+CriaBanco.ID+" = "+position;
+//        db.execSQL(sql);
+        //return db.delete(CriaBanco.TABLE, CriaBanco.ID+" = 1",null);
         //return db.delete(CriaBanco.TABLE, "first_name = ''", null);
         //return db.delete(CriaBanco.TABLE, "_id=2", null);
 

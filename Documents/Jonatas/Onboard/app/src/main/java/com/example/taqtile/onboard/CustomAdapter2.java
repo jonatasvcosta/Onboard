@@ -61,15 +61,19 @@ public class CustomAdapter2 extends ArrayAdapter<String> {
                 String name = c.getString(c.getColumnIndex("first_name"));
                 String lastname = c.getString(c.getColumnIndex("last_name"));
                 //Toast.makeText(getContext(),"Nome: "+name+" Sobrenome: "+lastname,Toast.LENGTH_SHORT).show();
-                crud.DeletarDados(name, lastname);
-                String userName = info.get(position).toString();
-                for(int i = 0; i < info.size(); i++){
-                    if(info.get(i).toString() == userName){
-                        info.remove(i);
-                        notifyDataSetChanged();
-                    }
-                }
-                //info.remove(position);
+                int retorno = crud.DeletarDados(name, lastname, String.valueOf(position));
+                //Toast.makeText(getContext(),"Deletados ("+String.valueOf(retorno)+") na position "+String.valueOf(position),Toast.LENGTH_SHORT).show();
+//                Gambiarra para deletar na lista
+//                String userName = info.get(position).toString();
+//                for(int i = 0; i < info.size(); i++){
+//                    if(info.get(i).toString() == userName){
+//                        info.remove(i);
+//                        notifyDataSetChanged();
+//                    }
+//                }
+//                final da gambiarra
+                info.remove(position);
+                notifyDataSetChanged();
 
             }
         });
@@ -81,6 +85,7 @@ public class CustomAdapter2 extends ArrayAdapter<String> {
                 intent.putExtra("firstName",completeName.substring(0,completeName.indexOf(" ")));
                 intent.putExtra("lastName",completeName.substring(completeName.indexOf(" "),completeName.length()));
                 intent.putExtra("avatar",avatar.get(position).toString());
+                intent.putExtra("position", String.valueOf(position));
                 notifyDataSetChanged();
                 context.startActivity(intent);
             }
